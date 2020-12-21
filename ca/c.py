@@ -42,7 +42,7 @@ def remove_mfrequently_data(): # ram 이 꽉 찬 경우 참조횟수가 많은 �
     remove_data(ram, ram_info, max_key)  # ln1에서 가장 많이 참조된 데이터 지움
 
 
-def move_cache(ln1, ln1_info, ln2, ln2_info):  # 가장 먼저 들어온 데이터 하위 저장장치로 옮기기 ex) L1-> L2, L3->ram
+def move_cache(ln1, ln1_info, ln2, ln2_info):  # 참조횟수가 가장 많은 데이터 하위 저장장치로 옮기기 ex) L1-> L2, L3->ram
     max_key = 0  # 참조횟수
     for max_key in ln1_info:
         break
