@@ -1,5 +1,5 @@
 from random import *
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 
 hdd = []
 for i in range(1, 5001):  # 하드디스크값 1~5000 으로 초기화
@@ -67,6 +67,7 @@ def search_L1(data):  # L1만 있는 캐시
                     print('%d RAM hit!' % data)
                     hit[1] = hit[1] + 1
                     remove_data(ram, ram_info, data)
+                    move_cache(L1, L1_info, ram, ram_info)
                     append_data(L1, L1_info, data)
                     append_data(ram, ram_info, data)
                     return data
@@ -74,6 +75,7 @@ def search_L1(data):  # L1만 있는 캐시
                     hit[3] = hit[3] + 1
                     remove_data(ram, ram_info, data)
                     remove_old_data()
+                    move_cache(L1, L1_info, ram, ram_info)
                     append_data(L1, L1_info, data)
                     append_data(ram, ram_info, data)
                 else:
@@ -98,7 +100,7 @@ def search_L1(data):  # L1만 있는 캐시
 
 if __name__ == '__main__':
     # L1 캐시
-    SIZE = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
+    SIZE = [10]
     hit_ratio_li = []
     miss_ratio_li = []
     approach_time_li = []
@@ -110,8 +112,8 @@ if __name__ == '__main__':
             # num1 = input()
             # print(' num2: ', end="")
             # num2 = input()
-            num1 = randint(1, 5000)
-            num2 = randint(1, 5000)
+            num1 = randint(1, 100)
+            num2 = randint(1, 100)
             print(j+1, '번째')
             print('num1: %d \t num2: %d' % (num1, num2))
             R1 = search_L1(num1)
@@ -143,15 +145,15 @@ if __name__ == '__main__':
         miss_ratio_li.append(float(100-(hit[0]/(i*2)*100)))
         approach_time_li.append(total_approach_time)
 
-    print(hit_ratio_li)
-    print(miss_ratio_li)
-    print(approach_time_li)
-    # plt.plot(SIZE, hit_ratio_li, color='orange', label='hit ratio')
-    # plt.plot(SIZE, miss_ratio_li, color='blue', label='miss ratio')
-    # plt.plot(SIZE, approach_time_li, color='purple', label='approach time')
-    # plt.legend(fontsize='x-large')
-    # plt.title('L1 only')
-    # plt.xlabel('Reference count')
-    # plt.ylabel('Performance indicator')
+    # print(hit_ratio_li)
+    # print(miss_ratio_li)
+    # print(approach_time_li)
+    plt.plot(SIZE, hit_ratio_li, color='orange', label='hit ratio')
+    plt.plot(SIZE, miss_ratio_li, color='blue', label='miss ratio')
+    plt.plot(SIZE, approach_time_li, color='purple', label='approach time')
+    plt.legend(fontsize='x-large')
+    plt.title('L1 only')
+    plt.xlabel('Reference count')
+    plt.ylabel('Performance indicator')
     # plt.show()
     print('종료')
