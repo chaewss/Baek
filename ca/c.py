@@ -11,7 +11,7 @@ L1_info = {}
 R1 = 0  # 레지스터 1
 R2 = 0  # 레지스터 2
 approach_time = 0  # 접근시간
-count = 0  # datetime 값이 다 같아서 해결법을 몰라 count 로 바꿨어요
+count = 0  # 선
 hit = [0, 0, 0]  # L1, ram, hdd 각각 hit 횟수
 
 
