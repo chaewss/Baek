@@ -3,7 +3,7 @@ if __name__ == '__main__':
     student_li = []
 
     for i in range(n):
-        weight, height = map(int, input().split())  # x = 몸무게, y = 키
+        weight, height = map(int, input().split())
         student_li.append((weight, height))
 
     for i in student_li:
