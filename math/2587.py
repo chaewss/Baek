@@ -1,6 +1,0 @@
-if __name__ == '__main__':
-    number = [int(input()) for _ in range(5)]
-    number.sort()
-
-    print(round(sum(number) / 5))
-    print(number[2])
